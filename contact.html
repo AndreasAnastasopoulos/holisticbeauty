@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="gr">
+
+<head>
+    <title>House Spa</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styleaki.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" /> <!-- MAP -->
+    <style>
+        #map {
+            height: 484px;
+            width: 100%;
+            border-radius: 12px;
+            z-index: 0;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo-nav-insta-wrapper">
+            <div class="icons">
+                <a
+                    href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                    <i class="fa-brands fa-instagram"></i>
+                </a>
+            </div>
+            <div>
+                <a href="index.html">
+                    <img src="images/newimgs/House Spa_logo.png" alt="Logo">
+                </a>
+            </div>
+            <div class="menu-wrap">
+                <input type="checkbox" class="toggler">
+                <div class="hamburger">
+                    <div></div>
+                </div>
+                <div class="menu">
+                    <div>
+                        <div>
+                            <ul>
+                                <li><a tabindex="0" class="underline-hover-btn" href="philosophy.html">ΣΧΕΤΙΚΑ ΜΕ ΕΜΕΝΑ</a></li>
+                                <li><a tabindex="0" class="underline-hover-btn" href="appointment.html">ΚΡΑΤΗΣΗ</a></li>
+                                <li><a tabindex="0" class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </nav>
+
+    <div class="main">
+        <div class="main-container">
+            <h1>ΕΠΙΚΟΙΝΩΝΙΑ</h1>
+        </div>
+        <div class="main-container">
+            <!-- CONTACT US -->
+            <div class="contact-us">
+                <div class="contact-info">
+                    <h2 style="align-self: center;">Ιωάννα Βαρδάκη,<br><span>Ολιστική Θεραπεύτρια</span></h2>
+                    <div style="padding-top: 8px;">
+                        <i class="fa fa-phone"></i>
+                        <span>
+                            <a class="inline-fancy" href="tel:" title="Μη διστάσεις να με καλέσεις">+30 6947572316</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fa-solid fa-people-arrows"></i>
+                        <span>
+                            <p>Δευτέρα - Τετάρτη - Πέμπτη - <br> Παρασκευή 9:00 - 17:00 <br> Σάββατο 9:00 - 15:00</p>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fa fa-envelope-o"></i>
+                        <span>
+                            <a class="inline-fancy" href="mailto:"
+                                title="Ή να μου στείλεις email">vardaki2552@gmail.com</a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fa fa-instagram"></i>
+                        <span>
+                            <a class="inline-fancy" title="Συμβουλές & ενημερώσεις καθημερινά"
+                                href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                                house_spa.holistic_beauty
+                            </a>
+                        </span>
+                    </div>
+                    <div>
+                        <i class="fa fa-calendar"></i>
+                        <span>
+                            <a class="inline-fancy" href="appointment.html" style="text-wrap: nowrap;"
+                                title="Εύκολα & γρήγορα">Κλείσε το ραντεβού σου εδώ</a>
+                        </span>
+                    </div>
+                </div>
+                <div class="contact-form-container">
+                    <h2 style="text-align: left;">Αν θες να ενημερώνεσαι πρώτη για προσφορές και υπηρεσίες ολιστικής
+                        ομορφιάς, άφησε τα στοιχεία σου εδώ:</h2>
+                    <form style="padding-top: 12px;" id="contactForm" method="post" class="contact-form">
+                        <div class="form-group">
+                            <input placeholder="Ονοματεπώνυμο" type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Email" type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <input placeholder="Τηλέφωνο" type="tel" id="phone" name="phone" required>
+                        </div>
+                        <button type="submit" class="submit-btn">ΘΕΛΩ</button>
+                    </form>
+                </div>
+            </div>
+            <div class="contact-us">
+                <div class="contact-map">
+                    <div id="map"></div>
+                    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+                    <script>
+                        // Initialize the map and set its view
+                        var map = L.map('map').setView([37.839251, 23.827468], 13); // Coordinates of Holistic Spa Beauty
+
+                        // Load and display tile layer from OpenStreetMap
+                        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                            attribution: '© OpenStreetMap contributors'
+                        }).addTo(map);
+
+                        // Draw a circle with a radius of 1km
+                        var circle = L.circle([37.839251, 23.827468], {
+                            color: '#503B31',
+                            fillColor: '#503B31',
+                            fillOpacity: 0.21,
+                            radius: 1000 // 1km radius in meters
+                        }).addTo(map);
+                    </script>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+            console.log('Form submission started');
+
+            const data = {
+                name: document.getElementById('name').value,
+                email: document.getElementById('email').value,
+                phone: document.getElementById('phone').value
+            };
+
+            console.log('Sending data:', data);
+
+            fetch('submit_form.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+                .then(response => {
+                    console.log('Response received:', response);
+                    return response.json();
+                })
+                .then(result => {
+                    console.log('Success:', result);
+                    document.getElementById('contactForm').reset();
+                    alert('Form submitted successfully!');
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    alert('Error submitting form. Please try again.');
+                });
+        }
+
+        // Make sure the event listener is attached
+        document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            if (form) {
+                form.addEventListener('submit', handleSubmit);
+            } else {
+                console.error('Form element not found!');
+            }
+        });
+    </script>
+
+    <footer>
+        <p>Ακολούθησε το House Spa</p>
+        <div class="footer-icons">
+            <a
+                href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                <i class="fa-brands fa-instagram"></i>
+            </a>
+        </div>
+        <p>&copy; 2024 House Spa Holistic Beauty. All rights reserved. <br> <a class="inline-fancy-footer"
+                href="https://github.com/AndreasAnastasopoulos">Made with love by yours truly.</a></p>
+    </footer>
+</body>
+
+</html>
