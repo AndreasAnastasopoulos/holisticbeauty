@@ -40,6 +40,8 @@
                                 <li><a tabindex="0" class="underline-hover-btn" href="philosophy.html">ΣΧΕΤΙΚΑ ΜΕ ΕΜΕΝΑ</a></li>
                                 <li><a tabindex="0" class="underline-hover-btn" href="appointment.html">ΚΡΑΤΗΣΗ</a></li>
                                 <li><a tabindex="0" class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
+                                <li><a tabindex="0" class="underline-hover-btn" href="#.html">ΣΥΜΒΟΥΛΕΥΤΙΚΗ</a></li>
+                                <li><a tabindex="0" class="underline-hover-btn" href="images/House Spa Holistic Training.pdf" download="House Spa Holistic Training">HOUSE SPA HOLISTIC TRAINING</a></li>
                             </ul>
                         </div>
                     </div>
@@ -131,7 +133,8 @@
                             <img tabindex="0" src="images/newimgs/mallaksi2.jpg" alt="Massage 2">
                             <div tabindex="0" class="text-content">
                                 <p>
-                                    <a style="text-shadow: 1px 1px 1px #503B31;" class="inline-fancy" href="#products">Τα προϊόντα μας</a> είναι μη τοξικά και
+                                    <a style="text-shadow: 1px 1px 1px #503B31;" class="inline-fancy"
+                                        href="#products">Τα προϊόντα μας</a> είναι μη τοξικά και
                                     είναι γεμάτα με
                                     βότανα, φρούτα, ρίζες,
                                     άνθη, καρπούς, έλαια & αιθέρια έλαια. Ισχυρά εκχυλίσματα και αφεψήματα ολόκληρων
@@ -159,7 +162,8 @@
                             <img tabindex="0" src="images/newimgs/mallaksi2.jpg" alt="Massage 2">
                             <div tabindex="0" class="text-content">
                                 <p>
-                                    <a style="text-shadow: 1px 1px 1px #503B31;" href="#products">Τα προϊόντα μας</a> είναι μη τοξικά και είναι γεμάτα με
+                                    <a style="text-shadow: 1px 1px 1px #503B31;" href="#products">Τα προϊόντα μας</a>
+                                    είναι μη τοξικά και είναι γεμάτα με
                                     βότανα, φρούτα, ρίζες,
                                     άνθη, καρπούς, έλαια & αιθέρια έλαια. Ισχυρά εκχυλίσματα και αφεψήματα ολόκληρων
                                     φυτών.
@@ -356,14 +360,24 @@
     </div>
 
     <footer>
-        <p>Ακολούθησε το House Spa</p>
-        <div class="footer-icons">
-            <a
-                href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
-                <i class="fa-brands fa-instagram"></i>
-            </a>
+        <div class="footer-row">
+            <div>
+                <p>Ακολούθησε το House Spa</p>
+                <div class="footer-icons">
+                    <a
+                        href="https://www.instagram.com/house_spa.holistic_beauty/?igshid=MzRlODBiNWFlZA%3D%3D&fbclid=IwAR1AkODjAt-B4QmifnteltO7VgVLDSogBm6hFmDRjrzC4aXeuEPh4ZGFhLs">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+            <div>
+                <a style="font-size: 0.8rem; line-height: 1.2rem;" href="privacy_policy.html" class="inline-fancy-footer">Πολιτική Απορρήτου</a>
+            </div>
         </div>
-        <p>&copy; 2024 House Spa Holistic Beauty. All rights reserved. <br> <a class="inline-fancy-footer" href="https://github.com/AndreasAnastasopoulos">Made with love by yours truly.</a></p>
+        <div class="footer-row">
+            <p>&copy; 2024 House Spa Holistic Beauty. All rights reserved. <br> <a class="inline-fancy-footer"
+                href="https://github.com/AndreasAnastasopoulos">Made with love by yours truly.</a></p>
+        </div>
     </footer>
 
 
@@ -374,8 +388,9 @@
                 var bottom_of_window = $(window).scrollTop() + $(window).height();
                 // Check the location of each element hidden */
                 $('.experience .content .hidden').each(function (i) {
-
-                    var bottom_of_object = $(this).offset().top + $(this).outerHeight();
+                    // Add an offset to trigger animation earlier (e.g., 180px before)
+                    var offset = 180;
+                    var bottom_of_object = $(this).offset().top + $(this).outerHeight() - offset;
 
                     /* If the object is completely visible in the window, fadeIn it */
                     if (bottom_of_window > bottom_of_object) {
