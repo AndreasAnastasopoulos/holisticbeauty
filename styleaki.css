@@ -29,7 +29,7 @@
   --logo-size-desktop: 6rem;
   --icon-size: 1.5rem;
 
-  --PRIMARY-COLOR: #503B31;
+  --PRIMARY-COLOR: #503b31;
   --ACCENT-COLOR: #4A7856;
   --ACCENT-COLOR2: #247E00;
   --SECONDARY-COLOR: #E0D0C1;
@@ -234,7 +234,8 @@ p {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  gap: 1rem; /* Optional spacing */
+  gap: 1rem;
+  /* Optional spacing */
 }
 
 .text-box {
@@ -255,7 +256,7 @@ p {
   color: var(--PRIMARY-COLOR);
 }
 
-.button-container{
+.button-container {
   display: flex;
   flex-direction: column;
   margin-bottom: var(--spacing-Normal);
@@ -263,7 +264,7 @@ p {
   align-items: center;
 }
 
-.button-container2{
+.button-container2 {
   display: flex;
   flex-direction: column;
   margin-top: 0.3rem;
@@ -272,7 +273,8 @@ p {
   gap: 0.2rem;
 }
 
-.button-container p, .button-container2 p{
+.button-container p,
+.button-container2 p {
   width: min(352px, 100vw);
   font-size: var(--font-size);
   line-height: var(--line-height);
@@ -280,7 +282,7 @@ p {
   text-shadow: 2px 2px 3px var(--PRIMARY-COLOR);
 }
 
-.button-container .hero-btn{
+.button-container .hero-btn {
   width: min(352px, 100vw);
 }
 
@@ -305,8 +307,8 @@ p {
 }
 
 /* TABLET VIEW */
-@media (min-width: 768px){
-  .button-container2{
+@media (min-width: 768px) {
+  .button-container2 {
     flex-direction: row;
   }
 }
@@ -478,6 +480,103 @@ p {
 
   .column {
     gap: 20px;
+  }
+}
+
+/****** BOOKING / SERVICE GALLERY **********/
+
+.booking-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-Lil);
+  padding: 20px;
+  background-color: var(--SECONDARY-COLOR);
+}
+
+.booking-page h1 {
+  font-size: var(--font-size-h1);
+  line-height: var(--line-heightH1);
+  color: var(--PRIMARY-COLOR);
+  text-align: center;
+}
+
+.booking-page h2{
+  font-size: var(--font-size-h2);
+  line-height: var(--line-heightH2);
+  color: var(--PRIMARY-COLOR);
+  text-align: left;
+  padding: 0;
+  border-bottom: 0;
+}
+
+.services-gallery {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: min(80%, 880px);
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 1px, solid, rgba(80, 59, 49, 0.1);
+}
+
+.service-photo img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: all 0.3s ease;
+}
+
+.service-photo img:hover{
+  filter: brightness(80%); /* Makes the image darker */
+  box-shadow: 0 2px 2px rgba(80, 59, 49, 0.1); /* Adds a shadow effect */
+}
+
+.service-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+  background-color: var(--SECONDARY-COLOR);
+  color: var(--PRIMARY-COLOR);
+  padding: 12px;
+  text-align: center;
+  width: 100%;
+}
+
+.service-text p {
+  text-align: left;
+  margin-bottom: var(--spacing-Lil);
+  font-size: var(--font-sizeP-H3);
+  line-height: var(--line-height-P-H3);
+}
+
+.service-text .hero-btn{
+  align-self: center;
+  width: fit-content;
+  border-radius: 0;
+}
+
+/* TABLET VIEW */
+@media (min-width: 768px) {
+  .services-gallery {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  .service {
+    width: calc(50% - 20px);
+  }
+}
+
+/* DESKTOP VIEW */
+@media (min-width: 1024px) {
+  .service {
+    width: calc(33.333% - 4px);
   }
 }
 
@@ -760,12 +859,14 @@ section {
 .contact-map {
   border-radius: 12px;
   height: var(--map-height);
-  width: min(348px, 80vw); /* MAX WIDTH SAME AS THE INFO CARD */
+  width: min(348px, 80vw);
+  /* MAX WIDTH SAME AS THE INFO CARD */
 }
 
 /* Contact Form */
 .contact-form-container {
-  width: min(348px, 100vw); /* MAX WIDTH SAME AS THE INFO CARD */
+  width: min(348px, 100vw);
+  /* MAX WIDTH SAME AS THE INFO CARD */
   background-color: var(--PRIMARY-COLOR);
   padding: var(--spacing-Lil);
   border-radius: 12px;
@@ -828,7 +929,7 @@ section {
 
 /* TABLET VIEW */
 @media (min-width: 768px) {
-  .contact-us{
+  .contact-us {
     flex-wrap: nowrap;
     flex-direction: row;
     justify-content: center;
