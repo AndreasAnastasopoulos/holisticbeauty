@@ -873,7 +873,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: min(348px, 100vw); /* MAX WIDTH SAME AS THE INFO CARD */
+  width: min(400px, 100vw); /* MAX WIDTH SAME AS THE INFO CARD */
   background-color: var(--PRIMARY-COLOR);
   padding: var(--spacing-Lil);
   border-radius: 12px;
@@ -885,7 +885,6 @@ section {
   font-size: var(--font-sizeP-H3);
   line-height: var(--line-height-P-H3);
   color: var(--SECONDARY-COLOR);
-  margin-bottom: 1.2rem;
   text-align: center;
   padding-bottom: 8px;
   border-bottom: 2px solid;
@@ -897,17 +896,9 @@ section {
   margin-bottom: 1.2rem;
 }
 
-.form-group:nth-child(1){
-  margin-top: var(--spacing-Lil);
-}
-.form-group:nth-child(3){
-  margin-bottom: calc(var(--spacing-Big) - 15%);
-}
-
 .form-group label {
   color: var(--SECONDARY-COLOR);
   font-size: var(--font-sizeP-H3);
-  margin-bottom: 0.5rem;
 }
 
 .form-group input {

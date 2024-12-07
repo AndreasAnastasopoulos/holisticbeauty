@@ -52,11 +52,11 @@
                                 <li><a tabindex="0" class="underline-hover-btn" href="philosophy.html">ΣΧΕΤΙΚΑ ΜΕ
                                         ΕΜΕΝΑ</a></li>
                                 <li><a tabindex="0" class="underline-hover-btn" href="appointment.html">ΚΡΑΤΗΣΗ</a></li>
-                                <li><a tabindex="0" class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
                                 <li><a tabindex="0" class="underline-hover-btn" href="#.html">ΣΥΜΒΟΥΛΕΥΤΙΚΗ</a></li>
                                 <li><a tabindex="0" class="underline-hover-btn"
                                         href="images/House Spa Holistic Training.pdf"
                                         download="House Spa Holistic Training">HOUSE SPA HOLISTIC TRAINING</a></li>
+                                <li><a tabindex="0" class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
                             </ul>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
             <!-- CONTACT US -->
             <div class="contact-us">
                 <div class="contact-info">
-                    <h2 style="align-self: center;">Ιωάννα Βαρδάκη,<br><span>Ολιστική Θεραπεύτρια</span></h2>
+                    <h2 style="align-self: center;">Ιωάννα Βαρδάκη,<br><span>Ολιστική Θεραπεύτρια Ομορφιάς</span></h2>
                     <div style="padding-top: 8px;">
                         <i class="fa fa-phone"></i>
                         <span>
@@ -112,21 +112,32 @@
                     </div>
                 </div>
                 <div class="contact-form-container">
-                    <h2 style="text-align: left;">Αν θες να ενημερώνεσαι πρώτη για προσφορές και υπηρεσίες ολιστικής
-                        ομορφιάς, άφησε τα στοιχεία σου εδώ:</h2>
+                    <h2 style="text-align: left;">Ανακάλυψε τα μυστικά της ολιστικής ομορφιάς! Άφησε το email σου και λάβε μοναδικές συμβουλές αυτοφροντίδας και φυσικής λάμψης απευθείας στο inbox σου.</h2>
                     <form style="padding-top: 12px;" id="contactForm" method="post" class="contact-form">
                         <div class="form-group">
-                            <input placeholder="Ονοματεπώνυμο" type="text" id="name" name="name" required>
+                            <input placeholder="Ονοματεπώνυμο" type="text" id="name" name="name">
                         </div>
                         <div class="form-group">
-                            <input placeholder="Email" type="email" id="email" name="email" required>
+                            <input placeholder="Email*" type="email" id="email" name="email" required>
                         </div>
                         <div class="form-group">
-                            <input placeholder="Τηλέφωνο" type="tel" id="phone" name="phone" required>
+                            <input placeholder="Τηλέφωνο" type="tel" id="phone" name="phone">
                         </div>
-                        <button type="submit" class="submit-btn">ΘΕΛΩ</button>
+                        <div class="form-group">
+                            <label>
+                                <p style="color: beige; font-size: 0.9rem; line-height: 1.2rem;"><input type="checkbox" id="consentCheckbox"> Αποδέχομαι να μοιραστώ τα στοιχεία μου και να λαμβάνω email από το House Spa.</p>
+                            </label>
+                        </div>
+                        <button type="submit" class="submit-btn" id="submitButton" disabled>ΘΕΛΩ</button>
                     </form>
                 </div>
+                
+                <script>
+                    document.getElementById('consentCheckbox').addEventListener('change', function () {
+                        const submitButton = document.getElementById('submitButton');
+                        submitButton.disabled = !this.checked;
+                    });
+                </script>
             </div>
             <div class="contact-us">
                 <div class="contact-map">
