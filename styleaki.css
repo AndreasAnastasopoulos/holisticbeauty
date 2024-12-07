@@ -87,13 +87,14 @@ body {
 }
 
 .back-video {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  z-index: -1;
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
+  position: fixed; /* Makes the video stay in place */
+  top: 50%; /* Center vertically */
+  left: 50%; /* Center horizontally */
+  transform: translate(-50%, -50%); /* Center with respect to its own dimensions */
+  width: 100vw; /* Full viewport width */
+  height: 100vh; /* Full viewport height */
+  object-fit: cover; /* Ensures the video covers the entire area */
+  z-index: -1; /* Places the video behind everything else */
   background: linear-gradient(var(--SECONDARY-COLOR), var(--PRIMARY-COLOR));
 }
 
@@ -823,7 +824,6 @@ section {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  object-fit: contain;
   gap: var(--spacing-Normal);
   margin-bottom: var(--spacing-Normal);
 }
@@ -873,7 +873,7 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: min(400px, 100vw); /* MAX WIDTH SAME AS THE INFO CARD */
+  width: min(364px, 100vw); /* MAX WIDTH SAME AS THE INFO CARD */
   background-color: var(--PRIMARY-COLOR);
   padding: var(--spacing-Lil);
   border-radius: 12px;
@@ -940,7 +940,8 @@ section {
     justify-content: center;
   }
   .contact-form-container{
-    height: 512px;  /* SAME AS THE INFO CARD */
+    height: 516px;  /* SAME AS THE INFO CARD */
+    width: 344px;
   }
   .contact-map{
     width: 600px;
@@ -950,7 +951,7 @@ section {
 
 @media (min-width: 920px) {
   .contact-form-container{
-    height: 484px; /* SAME AS THE INFO CARD */
+    height: 464px; /* SAME AS THE INFO CARD */
   }
 }
 
@@ -1234,4 +1235,64 @@ a.inline-fancy-footer:focus:before {
     width: 100vw;
     height: 100vw;
   }
+}
+
+
+/* ~~~~~~~~~~~~~~~~ POP UP WINDOW FORM ~~~~~~~~~~~~~~~~~~ */
+
+/*   This is the background overlay   */
+.backgroundOverlay {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  background: var(--glass-color-4TEXT);
+  z-index: 101;
+  display: none;
+}
+
+/*   This is the Popup Window   */
+.delayedPopupWindow {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* Center with respect to its own dimensions */
+  width: 90vw; 
+  height: 50vh; 
+  background-color: var(--SECONDARY-COLOR);
+  border: 2px solid var(--PRIMARY-COLOR);
+  border-radius: 12px;
+  z-index: 102;
+  padding: 12px 12px;
+}
+
+.delayedPopupWindow h2{
+  font-size: var(--font-sizeP-H3);
+  line-height: var(--line-height-P-H3);
+}
+
+.delayedPopupWindow .submit-btn:hover, .delayedPopupWindow .submit-btn:focus{
+  color: var(--PRIMARY-COLOR);
+  border: 1px solid var(--PRIMARY-COLOR);
+  background-color: beige;
+}
+
+/*   This is the closing button  */
+#btnClose {
+  width: 100%;
+  display: block;
+  text-align: right;
+  text-decoration: none;
+  color: var(--PRIMARY-COLOR);
+}
+
+/*   This is the closing button hover state  */
+#btnClose:hover {
+  font-weight: bold;
 }
