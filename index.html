@@ -17,16 +17,10 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function () {
-      // Check if the popup has already been shown
-      if (!localStorage.getItem('popupDisplayed')) {
-        // Fade in delay for the background overlay
-        $("#bkgOverlay").delay(4800).fadeIn(400);
-        // Fade in delay for the popup
-        $("#delayedPopup").delay(5000).fadeIn(400);
-
-        // Set the flag in localStorage to prevent showing it again
-        localStorage.setItem('popupDisplayed', 'true');
-      }
+      // Fade in delay for the background overlay
+      $("#bkgOverlay").delay(4800).fadeIn(400);
+      // Fade in delay for the popup
+      $("#delayedPopup").delay(5000).fadeIn(400);
 
       // Hide dialog and background when the user clicks the close button
       $("#btnClose").click(function (e) {
@@ -42,8 +36,6 @@
     }
   </script>
 </head>
-
-<!-- Run this on the console to test again the popup window: localStorage.removeItem('popupDisplayed');-->  
 
 <body class="main-page">
   <video autoplay loop muted playsinline preload="auto" class="back-video">
@@ -77,8 +69,8 @@
                     ΕΜΕΝΑ</a></li>
                 <li><a tabindex="0" class="underline-hover-btn" href="appointment.html">ΟΛΙΣΤΙΚΕΣ ΘΕΡΑΠΕΙΕΣ</a></li>
                 <li><a tabindex="0" class="underline-hover-btn" href="#.html">ΣΥΜΒΟΥΛΕΥΤΙΚΗ</a></li>
-                <li><a tabindex="0" class="underline-hover-btn" href="images/House Spa Holistic Training.pdf" title="House Spa Holistic Training"
-                    target="_blank">HOUSE SPA HOLISTIC TRAINING</a></li>
+                <li><a tabindex="0" class="underline-hover-btn" href="images/House Spa Holistic Training.pdf"
+                    title="House Spa Holistic Training" target="_blank">HOUSE SPA HOLISTIC TRAINING</a></li>
                 <li><a tabindex="0" class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
               </ul>
             </div>
