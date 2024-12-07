@@ -17,12 +17,18 @@
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script>
     $(document).ready(function () {
-      // Fade in delay for the background overlay (control timing here)
-      $("#bkgOverlay").delay(3800).fadeIn(400);
-      // Fade in delay for the popup (control timing here)
-      $("#delayedPopup").delay(4000).fadeIn(400);
+      // Check if the popup has already been shown
+      if (!localStorage.getItem('popupDisplayed')) {
+        // Fade in delay for the background overlay
+        $("#bkgOverlay").delay(4800).fadeIn(400);
+        // Fade in delay for the popup
+        $("#delayedPopup").delay(5000).fadeIn(400);
 
-      // Hide dialogue and background when the user clicks the close button
+        // Set the flag in localStorage to prevent showing it again
+        localStorage.setItem('popupDisplayed', 'true');
+      }
+
+      // Hide dialog and background when the user clicks the close button
       $("#btnClose").click(function (e) {
         HideDialog();
         e.preventDefault();
@@ -36,6 +42,8 @@
     }
   </script>
 </head>
+
+<!-- Run this on the console to test again the popup window: localStorage.removeItem('popupDisplayed');-->  
 
 <body class="main-page">
   <video autoplay loop muted playsinline preload="auto" class="back-video">
@@ -100,7 +108,8 @@
       λάβε μοναδικές συμβουλές αυτοφροντίδας απευθείας στο inbox σου.</h2>
     <form style="padding-top: 12px;" id="contactForm" method="post" class="contact-form">
       <div class="form-group">
-        <input style="border: 1px solid #503b31; background-color: beige;" placeholder="Email" type="email" id="email" name="email" required>
+        <input style="border: 1px solid #503b31; background-color: beige;" placeholder="Email" type="email" id="email"
+          name="email" required>
       </div>
       <div class="form-group">
         <label>

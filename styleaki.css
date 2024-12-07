@@ -1263,8 +1263,8 @@ a.inline-fancy-footer:focus:before {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%); /* Center with respect to its own dimensions */
-  width: 90vw; 
-  height: 50vh; 
+  width: min(90vw, 600px); 
+  height: max(fit-content, 380px); 
   background-color: var(--SECONDARY-COLOR);
   border: 2px solid var(--PRIMARY-COLOR);
   border-radius: 12px;
