@@ -98,20 +98,6 @@ body {
   background: linear-gradient(var(--SECONDARY-COLOR), var(--PRIMARY-COLOR));
 }
 
-@media (min-aspect-ratio: 16/9) {
-  .back-video {
-    width: 100%;
-    height: auto;
-  }
-}
-
-@media (max-aspect-ratio: 16/9) {
-  .back-video {
-    width: auto;
-    height: 100%;
-  }
-}
-
 nav {
   margin-top: 32px;
   width: 100%;
@@ -1295,4 +1281,12 @@ a.inline-fancy-footer:focus:before {
 /*   This is the closing button hover state  */
 #btnClose:hover {
   font-weight: bold;
+}
+
+/* Mobile solution for "hover" */
+@media (max-width: 1023px) {
+  [data-touch-interact="true"]:active {
+      opacity: 0.7;
+      transform: scale(0.98);
+  }
 }
