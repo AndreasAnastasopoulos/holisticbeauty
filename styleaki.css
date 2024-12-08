@@ -65,7 +65,8 @@ body {
 
 .main-page {
   width: 100%;
-  height: 100vh; /* Full viewport height */
+  height: 100vh;
+  /* Full viewport height */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -87,14 +88,22 @@ body {
 }
 
 .back-video {
-  position: fixed; /* Makes the video stay in place */
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  transform: translate(-50%, -50%); /* Center with respect to its own dimensions */
-  width: 100vw; /* Full viewport width */
-  height: 100vh; /* Full viewport height */
-  object-fit: cover; /* Ensures the video covers the entire area */
-  z-index: -1; /* Places the video behind everything else */
+  position: fixed;
+  /* Makes the video stay in place */
+  top: 50%;
+  /* Center vertically */
+  left: 50%;
+  /* Center horizontally */
+  transform: translate(-50%, -50%);
+  /* Center with respect to its own dimensions */
+  width: 100vw;
+  /* Full viewport width */
+  height: 100vh;
+  /* Full viewport height */
+  object-fit: cover;
+  /* Ensures the video covers the entire area */
+  z-index: -1;
+  /* Places the video behind everything else */
   background: linear-gradient(var(--SECONDARY-COLOR), var(--PRIMARY-COLOR));
 }
 
@@ -222,7 +231,7 @@ p {
   margin-bottom: var(--spacing-Lil);
 }
 
-.bottom-content{
+.bottom-content {
   display: flex;
   margin-top: var(--spacing-Normal);
 }
@@ -268,17 +277,18 @@ p {
   width: calc(min(352px, 100vw) - 10%);
 }
 
-.button-container a{
+.button-container a {
   font-size: calc(var(--font-size) - 10%);
   line-height: calc(var(--line-height) - 10%);
 }
 
 /* TABLET VIEW */
 @media (min-width: 768px) {
-  .button-container .hero-btn{
+  .button-container .hero-btn {
     width: min(352px, 90vw);
   }
-  .button-container a{
+
+  .button-container a {
     font-size: var(--font-size);
     line-height: var(--line-height);
   }
@@ -475,29 +485,70 @@ p {
 }
 
 /******** SUMVOULEFTIKI OLISTIKIS OMORFIAS **********/
-.consulting{
+.consulting {
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: var(--spacing-Normal);
-  padding: 12px;
+  padding: var(--spacing-Lil) 12px;
 }
 
-.consulting p{
+.consulting p {
   width: 70vw;
 }
 
-.consulting h2{
+.consulting-container h2 {
   text-decoration: none;
   border-bottom: none;
 }
 
-.consulting ol{
-  width: min(70vw, 600px);
-  padding: 12px 40px;
-  border: 1px solid var(--PRIMARY-COLOR);
+.scrollable-card-grid {
+  scrollbar-color: var(--SECONDARY-COLOR);
+  scrollbar-width: 8px;
+  scrollbar-gutter: always;
+  padding: var(--spacing-Normal);
+  display: flex;
+  overflow-x: scroll;
+  -webkit-overflow-scrolling: touch;
+}
+
+.scrollable-card-2 {
+  min-width: 300px;
+  min-height: 350px;
+  padding: 1.5rem;
   border-radius: 16px;
-  box-shadow: 4px 2px 8px var(--PRIMARY-COLOR);
+  background: var(--PRIMARY-COLOR);
+  box-shadow: -4px 0 2px var(--SECONDARY-COLOR);
+  display: flex;
+  flex-direction: column;
+  transition: 0.2s;
+  margin: 0;
+}
+
+.scrollable-card-2:hover {
+  transform: translateY(-1rem);
+  cursor: pointer;
+}
+
+.scrollable-card-2:hover~.scrollable-card-2 {
+  transform: translateX(130px);
+}
+
+.scrollable-card-2:not(:first-child) {
+  margin-left: -130px;
+}
+
+.card-header{
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-Normal);
+  padding-top: var(--spacing-Lil);
+}
+
+.card-header h3, .card-header p {
+  color: var(--SECONDARY-COLOR);
+  font-size: var(--font-sizeP-H3);
+  line-height: var(--line-height-P-H3);
 }
 
 /****** BOOKING / SERVICE GALLERY **********/
@@ -518,7 +569,7 @@ p {
   text-align: center;
 }
 
-.booking-page h2{
+.booking-page h2 {
   font-size: var(--font-size-h2);
   line-height: var(--line-heightH2);
   color: var(--PRIMARY-COLOR);
@@ -549,9 +600,11 @@ p {
   transition: all 0.3s ease;
 }
 
-.service-photo img:hover{
-  filter: brightness(80%); /* Makes the image darker */
-  box-shadow: 0 2px 2px rgba(80, 59, 49, 0.1); /* Adds a shadow effect */
+.service-photo img:hover {
+  filter: brightness(80%);
+  /* Makes the image darker */
+  box-shadow: 0 2px 2px rgba(80, 59, 49, 0.1);
+  /* Adds a shadow effect */
 }
 
 .service-text {
@@ -573,7 +626,7 @@ p {
   line-height: var(--line-height-P-H3);
 }
 
-.service-text .hero-btn{
+.service-text .hero-btn {
   align-self: center;
   width: fit-content;
   border-radius: 0;
@@ -885,7 +938,8 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: min(364px, 100vw); /* MAX WIDTH SAME AS THE INFO CARD */
+  width: min(364px, 100vw);
+  /* MAX WIDTH SAME AS THE INFO CARD */
   background-color: var(--PRIMARY-COLOR);
   padding: var(--spacing-Lil);
   border-radius: 12px;
@@ -951,19 +1005,23 @@ section {
     flex-direction: row;
     justify-content: center;
   }
-  .contact-form-container{
-    height: 516px;  /* SAME AS THE INFO CARD */
+
+  .contact-form-container {
+    height: 516px;
+    /* SAME AS THE INFO CARD */
     width: 344px;
   }
-  .contact-map{
+
+  .contact-map {
     width: 600px;
     height: auto;
   }
 }
 
 @media (min-width: 920px) {
-  .contact-form-container{
-    height: 464px; /* SAME AS THE INFO CARD */
+  .contact-form-container {
+    height: 464px;
+    /* SAME AS THE INFO CARD */
   }
 }
 
@@ -988,7 +1046,7 @@ footer {
   text-align: center;
 }
 
-.footer-row{
+.footer-row {
   display: flex;
   flex-direction: row;
   align-items: baseline;
@@ -997,7 +1055,7 @@ footer {
   padding: 0.5rem;
 }
 
-footer p{
+footer p {
   font-size: 0.8rem;
   line-height: 1.2rem;
   color: var(--SECONDARY-COLOR);
@@ -1274,9 +1332,10 @@ a.inline-fancy-footer:focus:before {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%); /* Center with respect to its own dimensions */
-  width: min(90vw, 600px); 
-  height: max(fit-content, 380px); 
+  transform: translate(-50%, -50%);
+  /* Center with respect to its own dimensions */
+  width: min(90vw, 600px);
+  height: max(fit-content, 380px);
   background-color: var(--SECONDARY-COLOR);
   border: 2px solid var(--PRIMARY-COLOR);
   border-radius: 12px;
@@ -1284,12 +1343,13 @@ a.inline-fancy-footer:focus:before {
   padding: 12px 12px;
 }
 
-.delayedPopupWindow h2{
+.delayedPopupWindow h2 {
   font-size: var(--font-sizeP-H3);
   line-height: var(--line-height-P-H3);
 }
 
-.delayedPopupWindow .submit-btn:hover, .delayedPopupWindow .submit-btn:focus{
+.delayedPopupWindow .submit-btn:hover,
+.delayedPopupWindow .submit-btn:focus {
   color: var(--PRIMARY-COLOR);
   border: 1px solid var(--PRIMARY-COLOR);
   background-color: beige;
@@ -1312,7 +1372,7 @@ a.inline-fancy-footer:focus:before {
 /* Mobile solution for "hover" */
 @media (max-width: 1023px) {
   [data-touch-interact="true"]:active {
-      opacity: 0.7;
-      transform: scale(0.98);
+    opacity: 0.7;
+    transform: scale(0.98);
   }
 }
