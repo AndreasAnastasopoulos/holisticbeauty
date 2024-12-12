@@ -538,14 +538,15 @@ p {
   margin-left: -130px;
 }
 
-.card-header{
+.card-header {
   display: flex;
   flex-direction: column;
   gap: var(--spacing-Normal);
   padding-top: var(--spacing-Lil);
 }
 
-.card-header h3, .card-header p {
+.card-header h3,
+.card-header p {
   color: var(--SECONDARY-COLOR);
   font-size: var(--font-sizeP-H3);
   line-height: var(--line-height-P-H3);
@@ -576,6 +577,28 @@ p {
   text-align: center;
   padding: 0;
   border-bottom: 0;
+}
+
+.list-in-main {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  list-style: none;
+  gap: var(--spacing-Lil);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  font-weight: bold;
+  text-decoration: underline 2px var(--PRIMARY-COLOR);
+}
+
+.list-in-main a.inline-fancy {
+  color: var(--PRIMARY-COLOR);
+}
+
+.list-in-main a.inline-fancy:hover,
+.list-in-main a.inline-fancy:focus {
+  background-color: var(--PRIMARY-COLOR);
+  color: var(--SECONDARY-COLOR);
 }
 
 .services-gallery {
@@ -931,6 +954,14 @@ section {
   height: var(--map-height);
   width: min(348px, 80vw);
   /* MAX WIDTH SAME AS THE INFO CARD */
+}
+
+.contact-map p{
+  text-align: right;
+  color: var(--PRIMARY-COLOR);
+  font-size: var(--font-size);
+  line-height: var(--line-height);
+  font-style: italic;
 }
 
 /* Contact Form */
@@ -1367,6 +1398,31 @@ a.inline-fancy-footer:focus:before {
 /*   This is the closing button hover state  */
 #btnClose:hover {
   font-weight: bold;
+}
+
+/* SCROLL TO TOP BUTTON */
+/* Scroll to top button styles */
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  background-color: var(--PRIMARY-COLOR);
+  color: var(--SECONDARY-COLOR);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+  z-index: 1000;
+  opacity: 0.5;
+}
+
+.scroll-to-top:hover {
+  background-color: var(--ACCENT-COLOR2);
+  opacity: 1;
 }
 
 /* Mobile solution for "hover" */
