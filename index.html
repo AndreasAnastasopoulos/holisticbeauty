@@ -72,7 +72,7 @@
                 <li><a tabindex="0" class="underline-hover-btn" href="appointment.html" data-touch-interact="true">ΟΛΙΣΤΙΚΕΣ ΘΕΡΑΠΕΙΕΣ</a></li>
                 <li><a tabindex="0" class="underline-hover-btn" href="consulting.html" data-touch-interact="true">ΣΥΜΒΟΥΛΕΥΤΙΚΗ</a></li>
                 <li><a tabindex="0" class="underline-hover-btn" href="images/House Spa Holistic Training.pdf"
-                    title="House Spa Holistic Training" target="_blank" data-touch-interact="true">HOUSE SPA HOLISTIC TRAINING</a></li>
+                    download="House Spa Holistic Training" data-touch-interact="true">HOUSE SPA HOLISTIC TRAINING</a></li>
                 <li><a tabindex="0" class="underline-hover-btn" href="contact.html" data-touch-interact="true">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
               </ul>
             </div>
@@ -115,85 +115,6 @@
       <button type="submit" class="submit-btn" id="submitButton">ΘΕΛΩ</button>
     </form>
   </div>
-
-  <script>
-    function handleSubmit(event) {
-      event.preventDefault();
-
-      const consentCheckbox = document.getElementById('consentCheckbox');
-      if (!consentCheckbox.checked) {
-        alertbox.render({
-          alertIcon: 'error',
-          title: 'Κάτι πήγε λάθος...',
-          message: 'Παρακαλώ αποδεχτείτε τους όρους πριν υποβάλετε τη φόρμα.',
-          btnTitle: 'Συνέχεια',
-          themeColor: '#503b31',
-          btnColor: '#503b31',
-          border: true
-        });
-        return;
-      }
-
-      console.log('Form submission started');
-
-      const data = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        phone: document.getElementById('phone').value
-      };
-
-      console.log('Sending data:', data);
-
-      fetch('submit_form.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify(data)
-      })
-        .then(response => {
-          console.log('Response received:', response);
-          return response.json();
-        })
-        .then(result => {
-          console.log('Success:', result);
-          document.getElementById('contactForm').reset();
-          alertbox.render({
-            alertIcon: 'success',
-            title: 'Ευχαριστούμε για την εμπιστοσύνη.',
-            message: 'Αγκαλιάστε την μοναδικότητά σας!',
-            btnTitle: 'Συνέχεια',
-            themeColor: '#247E00',
-            btnColor: '#247E00',
-            border: true
-          });
-        })
-        .catch(error => {
-          console.error('Error:', error);
-          alertbox.render({
-            alertIcon: 'error',
-            title: 'Κάτι πήγε λάθος...',
-            message: 'Ξανασυμπληρώστε την φόρμα.',
-            btnTitle: 'Συνέχεια',
-            themeColor: '#503b31',
-            btnColor: '#503b31',
-            border: true
-          });
-          document.getElementById('contactForm').reset();
-        });
-    }
-
-    // Make sure the event listener is attached
-    document.addEventListener('DOMContentLoaded', function () {
-      const form = document.getElementById('contactForm');
-      if (form) {
-        form.addEventListener('submit', handleSubmit);
-      } else {
-        console.error('Form element not found!');
-      }
-    });
-  </script>
   <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
 </body>
 
