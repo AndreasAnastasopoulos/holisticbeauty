@@ -659,6 +659,12 @@ i {
   margin-bottom: var(--spacing-Lil);
   font-size: var(--font-sizeP-H3);
   line-height: var(--line-height-P-H3);
+  width: 100%;
+}
+
+.face-services-gallery .service-text div p, .face-services-gallery .service-text div h3 {
+  width: 80%;
+  padding-left: 12px;
 }
 
 .service-text .hero-btn {
