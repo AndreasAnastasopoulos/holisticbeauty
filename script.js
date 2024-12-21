@@ -1,39 +1,47 @@
-/* Hover solution for mobile devices */
-document.addEventListener('DOMContentLoaded', () => {
-    // Function to check if we're on a touch device or small screen
-    function isTouchDeviceOrSmallScreen() {
-        return (window.innerWidth <= 1024) || ('ontouchstart' in window) || (navigator.maxTouchPoints > 0);
-    }
+/* Toggle hover or no hover on touch devices */
+document.addEventListener("DOMContentLoaded", () => {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
 
-    // Only add touch handling if on mobile/touch devices
-    if (isTouchDeviceOrSmallScreen()) {
-        // Add touch handling to the entire document
-        document.addEventListener('touchstart', function (e) {
-            // Check if the touched element should have touch interactions
-            const target = e.target.closest('[data-touch-interact="true"]');
+    if (isTouchDevice) {
+        let currentActiveElement = null;
+        const elements = document.querySelectorAll('a.inline-fancy, .text-box h1, .hero-btn, .container, .scrollable-card-2, .service-photo img, .list-in-main a.inline-fancy, .submit-btn, a.inline-fancy-footer, .menu-wrap .toggler:checked, .underline-hover-btn, .delayedPopupWindow .submit-btn, #btnClose, .scroll-to-top');
 
-            if (target) {
-                // Prevent default to stop additional events
-                e.preventDefault();
+        elements.forEach(element => {
+            element.addEventListener('click', (event) => {
+                event.preventDefault();
+                event.stopPropagation();
 
-                // Add visual feedback
-                target.classList.add('touch-active');
-            }
-        }, { passive: false });
+                // If clicking the currently active element, deactivate it
+                if (currentActiveElement === element) {
+                    element.classList.remove('hover-active');
+                    currentActiveElement = null;
+                    return;
+                }
 
-        document.addEventListener('touchend', function (e) {
-            const target = e.target.closest('[data-touch-interact="true"]');
+                // Remove active class from previous element
+                if (currentActiveElement) {
+                    currentActiveElement.classList.remove('hover-active');
+                }
 
-            if (target) {
-                // Remove visual feedback
-                target.classList.remove('touch-active');
+                // Activate new element
+                element.classList.add('hover-active');
+                currentActiveElement = element;
+            });
+        });
 
-                // Simulate a click event
-                target.click();
+        // Remove "hover-active" from all elements when clicking outside
+        document.addEventListener('click', () => {
+            if (currentActiveElement) {
+                currentActiveElement.classList.remove('hover-active');
+                currentActiveElement = null;
             }
         });
     }
 });
+
+
+
+
 
 /* // Email Sender Component
     // Original work by Basharath (https://github.com/Basharath/FormEasy)
