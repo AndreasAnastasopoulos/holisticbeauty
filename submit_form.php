@@ -17,8 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         error_log("Decoded data: " . print_r($data, true));
         
         // Your Google Apps Script URL
-        $url = 'https://script.google.com/macros/s/AKfycbzu2zZivxbaeF6wX8v13A9GNJuilFVdBoS41QAhDIRo2U6jjD0Xc65ta_TO7RR4ul0N4g/exec';
-
+        $url = ' https://script.google.com/macros/s/AKfycbwAJ7_kS9Wl1UGEWmYBqILKuQWYI8pEuDuSN_d-zH-eyhP4dDy1BXW754YNdMJEhxJFlg/exec';
+       
         $ch = curl_init($url);
         curl_setopt_array($ch, array(
             CURLOPT_POST => true,
