@@ -2,48 +2,87 @@
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-// Allow from any origin
+// Allow from specific origin - replace with your actual domain
 header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Methods: POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
-header('Content-Type: application/json'); // Make sure this is set
+header('Content-Type: application/json');
 
-// Log incoming request
-error_log("Received form submission");
+// Log file setup
+$logFile = __DIR__ . '/form_submissions.log';
+function writeLog($message)
+{
+    global $logFile;
+    $timestamp = date('Y-m-d H:i:s');
+    file_put_contents($logFile, "[$timestamp] $message\n", FILE_APPEND);
+}
+
+writeLog("Request received: " . $_SERVER['REQUEST_METHOD']);
+
+// Handle OPTIONS request for CORS
+if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
+    http_response_code(200);
+    exit();
+}
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
-        $data = json_decode(file_get_contents('php://input'), true);
-        error_log("Decoded data: " . print_r($data, true));
-        
-        // Your Google Apps Script URL
-        $url = ' https://script.google.com/macros/s/AKfycbwAJ7_kS9Wl1UGEWmYBqILKuQWYI8pEuDuSN_d-zH-eyhP4dDy1BXW754YNdMJEhxJFlg/exec';
-       
+        $input = file_get_contents('php://input');
+        writeLog("Raw input: " . $input);
+
+        $data = json_decode($input, true);
+        if (json_last_error() !== JSON_ERROR_NONE) {
+            throw new Exception('Invalid JSON: ' . json_last_error_msg());
+        }
+
+        writeLog("Decoded data: " . print_r($data, true));
+
+        // Validate required fields
+        $requiredFields = ['name', 'email', 'phone'];
+        foreach ($requiredFields as $field) {
+            if (empty($data[$field])) {
+                throw new Exception("Missing required field: $field");
+            }
+        }
+
+        // Your Google Apps Script URL - make sure this is correct
+        $url = 'https://script.google.com/macros/s/AKfycbxB5BDcirEuY3FNgvlXwxkmeqNZWmT763V93ck04Z6djTnfAONCHmBqL7kUT4r3rsizTg/exec';
+
         $ch = curl_init($url);
-        curl_setopt_array($ch, array(
+        $postData = http_build_query($data);
+        writeLog("Sending to Apps Script: " . $postData);
+
+        curl_setopt_array($ch, [
             CURLOPT_POST => true,
-            CURLOPT_POSTFIELDS => http_build_query($data),
+            CURLOPT_POSTFIELDS => $postData,
             CURLOPT_RETURNTRANSFER => true,
             CURLOPT_FOLLOWLOCATION => true,
-            CURLOPT_SSL_VERIFYPEER => false // Only for testing
-        ));
-        
+            CURLOPT_SSL_VERIFYPEER => true,
+            CURLOPT_SSL_VERIFYHOST => 2,
+            CURLOPT_TIMEOUT => 30
+        ]);
+
         $response = curl_exec($ch);
         $httpCode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        
-        if(curl_errno($ch)) {
-            throw new Exception(curl_error($ch));
+        writeLog("Apps Script response (HTTP $httpCode): " . $response);
+
+        if ($response === false) {
+            throw new Exception('Curl error: ' . curl_error($ch));
         }
-        
+
         curl_close($ch);
-        
+
+        if ($httpCode !== 200) {
+            throw new Exception("Apps Script returned HTTP code $httpCode");
+        }
+
         echo json_encode([
             'success' => true,
-            'message' => 'Form submitted successfully',
-            'data' => $data
+            'message' => 'Η φόρμα υποβλήθηκε με επιτυχία',
+            'response' => json_decode($response, true)
         ]);
-        
     } catch (Exception $e) {
+        writeLog("Error: " . $e->getMessage());
         http_response_code(500);
         echo json_encode([
             'success' => false,
@@ -57,4 +96,3 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'message' => 'Method not allowed'
     ]);
 }
-?>
