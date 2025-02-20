@@ -150,6 +150,8 @@ nav {
 a {
   text-decoration: none;
   color: var(--SECONDARY-COLOR);
+  pointer-events: auto !important;
+  /* Ensure that pointer events are not disabled */
 }
 
 a:has(i) {
@@ -164,26 +166,6 @@ a.inline-fancy {
   box-shadow: inset 0 -1px 0 var(--SECONDARY-COLOR);
   transition: background 0.25s cubic-bezier(0.25, 0.8, 0.74, 1.02);
   position: relative;
-}
-
-a.inline-fancy:hover,
-a.inline-fancy:focus-within {
-  background-color: var(--SECONDARY-COLOR);
-  color: var(--PRIMARY-COLOR);
-}
-
-a.inline-fancy:hover:before,
-a.inline-fancy:focus-within:before {
-  position: absolute;
-  top: -0.4em;
-  left: 50%;
-  border: solid transparent;
-  height: 0;
-  width: 0;
-  pointer-events: none;
-  border-top-color: rgba(255, 255, 255, 0.9);
-  border-width: 0.5em;
-  margin-left: -0.5em;
 }
 
 h1 {
@@ -258,12 +240,6 @@ p {
   transition: 1s;
 }
 
-.text-box h1:hover,
-.text-box h1:focus-within {
-  text-shadow: 1px 1px 1px var(--SECONDARY-COLOR);
-  color: var(--PRIMARY-COLOR);
-}
-
 .button-container {
   display: flex;
   flex-direction: column;
@@ -300,14 +276,6 @@ p {
   background-color: var(--PRIMARY-COLOR);
   cursor: pointer;
   transition: 1s;
-}
-
-.hero-btn:hover,
-.hero-btn:focus-within {
-  border: 1px solid var(--PRIMARY-COLOR);
-  background-color: var(--SECONDARY-COLOR);
-  color: var(--PRIMARY-COLOR);
-  text-shadow: 1px 1px 1px var(--PRIMARY-COLOR);
 }
 
 .main-container {
@@ -411,19 +379,6 @@ p {
   padding: 12px 12px;
 }
 
-.container:hover img,
-.container:focus-within img {
-  transform: scale(1.05);
-  /* Slight zoom effect */
-}
-
-.container:hover .text-content,
-.container:focus-within .text-content {
-  opacity: 1;
-  transform: translateY(0);
-  /* Slide text overlay into view */
-}
-
 /* Show the text properly */
 @media (min-width: 471px) {
   .container .text-content p {
@@ -519,15 +474,6 @@ p {
   flex-direction: column;
   transition: 0.2s;
   margin: 0;
-}
-
-.scrollable-card-2:hover {
-  transform: translateY(-1rem);
-  cursor: pointer;
-}
-
-.scrollable-card-2:hover~.scrollable-card-2 {
-  transform: translateX(130px);
 }
 
 .scrollable-card-2:not(:first-child) {
@@ -633,13 +579,6 @@ i {
   height: auto;
   object-fit: cover;
   transition: all 0.3s ease;
-}
-
-.service-photo img:hover {
-  filter: brightness(80%);
-  /* Makes the image darker */
-  box-shadow: 0 2px 2px rgba(80, 59, 49, 0.1);
-  /* Adds a shadow effect */
 }
 
 .service-text {
@@ -793,12 +732,6 @@ i {
 
 .list-in-main a.inline-fancy {
   color: var(--PRIMARY-COLOR);
-}
-
-.list-in-main a.inline-fancy:hover,
-.list-in-main a.inline-fancy:focus-within {
-  background-color: var(--PRIMARY-COLOR);
-  color: var(--SECONDARY-COLOR);
 }
 
 /****** EXPERIENCE SECTION ******/
@@ -1149,13 +1082,6 @@ section {
   transition: 1s ease;
 }
 
-.submit-btn:hover,
-.submit-btn:focus-within {
-  background-color: var(--SECONDARY-COLOR);
-  color: var(--PRIMARY-COLOR);
-  text-shadow: 1px 1px 1px var(--PRIMARY-COLOR);
-}
-
 /* TABLET VIEW */
 @media (min-width: 768px) {
   .contact-us {
@@ -1239,26 +1165,6 @@ a.inline-fancy-footer {
   position: relative;
 }
 
-a.inline-fancy-footer:hover,
-a.inline-fancy-footer:focus-within {
-  background-color: var(--SECONDARY-COLOR);
-  color: var(--PRIMARY-COLOR);
-}
-
-a.inline-fancy-footer:hover:before,
-a.inline-fancy-footer:focus-within:before {
-  position: absolute;
-  top: -0.4em;
-  left: 50%;
-  border: solid transparent;
-  height: 0;
-  width: 0;
-  pointer-events: none;
-  border-top-color: rgba(255, 255, 255, 0.9);
-  border-width: 0.5em;
-  margin-left: -0.5em;
-}
-
 /****** HAMBURGER MENU & NAV ******/
 
 
@@ -1269,6 +1175,7 @@ a.inline-fancy-footer:focus-within:before {
   width: 64px;
   height: 64px;
 }
+
 
 .menu-wrap .toggler {
   position: absolute;
@@ -1338,11 +1245,6 @@ a.inline-fancy-footer:focus-within:before {
   transform: rotate(90deg);
 }
 
-/* Rotate On Hover When Checked */
-.menu-wrap .toggler:checked:hover+.hamburger>div,
-.menu-wrap .toggler:checked:focus-within+.hamburger>div {
-  transform: rotate(225deg);
-}
 
 /* Show Menu */
 .menu-wrap .toggler:checked~.menu {
@@ -1423,18 +1325,6 @@ a.inline-fancy-footer:focus-within:before {
   position: relative;
 }
 
-.underline-hover-btn:hover,
-.underline-hover-btn:focus-within {
-  color: var(--PRIMARY-COLOR);
-}
-
-.underline-hover-btn:hover:before,
-.underline-hover-btn:focus-within:before {
-  transform: none;
-  opacity: 1;
-  transition-duration: 0.4s;
-}
-
 .underline-hover-btn:before {
   content: "";
   position: absolute;
@@ -1446,7 +1336,6 @@ a.inline-fancy-footer:focus-within:before {
   transform: translateY(8px);
   opacity: 0;
   transition: 1.8s cubic-bezier(0.2, 1, 0.3, 1);
-  pointer-events: none;
 }
 
 /* Blur not covering the X button */
@@ -1505,13 +1394,6 @@ a.inline-fancy-footer:focus-within:before {
   line-height: var(--line-height-P-H3);
 }
 
-.delayedPopupWindow .submit-btn:hover,
-.delayedPopupWindow .submit-btn:focus-within {
-  color: var(--PRIMARY-COLOR);
-  border: 1px solid var(--PRIMARY-COLOR);
-  background-color: beige;
-}
-
 /*   This is the closing button  */
 #btnClose {
   width: 100%;
@@ -1519,11 +1401,6 @@ a.inline-fancy-footer:focus-within:before {
   text-align: right;
   text-decoration: none;
   color: var(--PRIMARY-COLOR);
-}
-
-/*   This is the closing button hover state  */
-#btnClose:hover {
-  font-weight: bold;
 }
 
 /* SCROLL TO TOP BUTTON */
@@ -1546,14 +1423,9 @@ a.inline-fancy-footer:focus-within:before {
   opacity: 0.5;
 }
 
-.scroll-to-top:hover {
-  background-color: var(--ACCENT-COLOR2);
-  opacity: 1;
-}
-
 /* Touch Screen Solution for HOVER */
+/*
 @media (hover: none) {
-
   a.inline-fancy,
   .text-box h1,
   .hero-btn,
@@ -1571,6 +1443,114 @@ a.inline-fancy-footer:focus-within:before {
     cursor: pointer;
   }
 
+  a.inline-fancy:active,
+  .inline-fancy.active-hover {
+    background-color: var(--SECONDARY-COLOR);
+    color: var(--PRIMARY-COLOR);
+  }
+
+  .inline-fancy.active-hover:before {
+    position: absolute;
+    top: -0.4em;
+    left: 50%;
+    border: solid transparent;
+    height: 0;
+    width: 0;
+    border-top-color: rgba(255, 255, 255, 0.9);
+    border-width: 0.5em;
+    margin-left: -0.5em;
+  }
+
+  .text-box h1:active,
+  .text-box h1.active-hover {
+    text-shadow: 1px 1px 1px var(--SECONDARY-COLOR);
+    color: var(--PRIMARY-COLOR);
+  }
+
+  .hero-btn:active,
+  .hero-btn.active-hover {
+    border: 1px solid var(--PRIMARY-COLOR);
+    background-color: var(--SECONDARY-COLOR);
+    color: var(--PRIMARY-COLOR);
+    text-shadow: 1px 1px 1px var(--PRIMARY-COLOR);
+  }
+
+  .container:active img,
+  .container.active-hover img {
+    transform: scale(1.05);
+  }
+
+  .container:active .text-content,
+  .container.active-hover .text-content {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .scrollable-card-2:active,
+  .scrollable-card-2.active-hover {
+    transform: translateY(-1rem);
+    cursor: pointer;
+  }
+
+  .scrollable-card-2:active~.scrollable-card-2,
+  .scrollable-card-2.active-hover~.scrollable-card-2 {
+    transform: translateX(130px);
+  }
+
+  .service-photo img:active,
+  .service-photo.active-hover img {
+    filter: brightness(80%);
+    box-shadow: 0 2px 2px rgba(80, 59, 49, 0.1);
+  }
+
+  .list-in-main a.inline-fancy:active,
+  .list-in-main a.inline-fancy.active-hover {
+    background-color: var(--PRIMARY-COLOR);
+    color: var(--SECONDARY-COLOR);
+  }
+
+  .submit-btn:active,
+  .submit-btn.active-hover {
+    background-color: var(--SECONDARY-COLOR);
+    color: var(--PRIMARY-COLOR);
+    text-shadow: 1px 1px 1px var(--PRIMARY-COLOR);
+  }
+
+  .underline-hover-btn:active,
+  .underline-hover-btn.active-hover {
+    color: var(--PRIMARY-COLOR);
+  }
+
+  .delayedPopupWindow .submit-btn:active,
+  .delayedPopupWindow .submit-btn.active-hover {
+    color: var(--PRIMARY-COLOR);
+    border: 1px solid var(--PRIMARY-COLOR);
+    background-color: beige;
+  }
+
+  #btnClose:active,
+  #btnClose.active-hover {
+    font-weight: bold;
+  }
+
+  .scroll-to-top:active,
+  .scroll-to-top.active-hover {
+    background-color: var(--ACCENT-COLOR2);
+    opacity: 1;
+  }
+}
+
+*/
+
+/************************************* ALL hover stuff ****************/
+
+@media (hover: hover) {
+  h3.philosophy-subtitle-hidden {
+    display: none;
+  }
+}
+
+@media (hover: none) {
   h3.philosophy-subtitle-hidden {
     width: 70vw;
     font-size: var(--font-size);
@@ -1579,8 +1559,145 @@ a.inline-fancy-footer:focus-within:before {
     color: var(--PRIMARY-COLOR);
   }
 }
-@media (hover: hover){
-  h3.philosophy-subtitle-hidden {
-    display: none;
-  }
+
+a.inline-fancy:hover,
+a.inline-fancy:focus-within {
+  background-color: var(--SECONDARY-COLOR);
+  color: var(--PRIMARY-COLOR);
 }
+
+a.inline-fancy:hover:before,
+a.inline-fancy:focus-within:before {
+  position: absolute;
+  top: -0.4em;
+  left: 50%;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  border-top-color: rgba(255, 255, 255, 0.9);
+  border-width: 0.5em;
+  margin-left: -0.5em;
+}
+
+.text-box h1:hover,
+.text-box h1:focus-within {
+  text-shadow: 1px 1px 1px var(--SECONDARY-COLOR);
+  color: var(--PRIMARY-COLOR);
+}
+
+.hero-btn:hover,
+.hero-btn:focus-within {
+  border: 1px solid var(--PRIMARY-COLOR);
+  background-color: var(--SECONDARY-COLOR);
+  color: var(--PRIMARY-COLOR);
+  text-shadow: 1px 1px 1px var(--PRIMARY-COLOR);
+}
+
+.container:hover img,
+.container:focus-within img {
+  transform: scale(1.05);
+  /* Slight zoom effect */
+}
+
+.container:hover .text-content,
+.container:focus-within .text-content {
+  opacity: 1;
+  transform: translateY(0);
+  /* Slide text overlay into view */
+}
+
+.scrollable-card-2:hover {
+  transform: translateY(-1rem);
+  cursor: pointer;
+}
+
+.scrollable-card-2:hover~.scrollable-card-2 {
+  transform: translateX(130px);
+}
+
+.service-photo img:hover {
+  filter: brightness(80%);
+  /* Makes the image darker */
+  box-shadow: 0 2px 2px rgba(80, 59, 49, 0.1);
+  /* Adds a shadow effect */
+}
+
+.list-in-main a.inline-fancy:hover,
+.list-in-main a.inline-fancy:focus-within {
+  background-color: var(--PRIMARY-COLOR);
+  color: var(--SECONDARY-COLOR);
+}
+
+.submit-btn:hover,
+.submit-btn:focus-within {
+  background-color: var(--SECONDARY-COLOR);
+  color: var(--PRIMARY-COLOR);
+  text-shadow: 1px 1px 1px var(--PRIMARY-COLOR);
+}
+
+a.inline-fancy-footer:hover,
+a.inline-fancy-footer:focus-within {
+  background-color: var(--SECONDARY-COLOR);
+  color: var(--PRIMARY-COLOR);
+}
+
+a.inline-fancy-footer:hover:before,
+a.inline-fancy-footer:focus-within:before {
+  position: absolute;
+  top: -0.4em;
+  left: 50%;
+  border: solid transparent;
+  height: 0;
+  width: 0;
+  border-top-color: rgba(255, 255, 255, 0.9);
+  border-width: 0.5em;
+  margin-left: -0.5em;
+}
+
+.menu-wrap .toggler:checked:hover+.hamburger>div,
+.menu-wrap .toggler:checked:focus-within+.hamburger>div {
+  transform: rotate(225deg);
+}
+
+.underline-hover-btn:hover,
+.underline-hover-btn:focus-within {
+  color: var(--PRIMARY-COLOR);
+}
+
+.underline-hover-btn:hover:before,
+.underline-hover-btn:focus-within:before {
+  transform: none;
+  opacity: 1;
+  transition-duration: 0.4s;
+}
+
+.underline-hover-btn:before {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  left: 0;
+  bottom: 1px;
+  background: var(--PRIMARY-COLOR);
+  transform: translateY(8px);
+  opacity: 0;
+  transition: 1.8s cubic-bezier(0.2, 1, 0.3, 1);
+}
+
+.delayedPopupWindow .submit-btn:hover,
+.delayedPopupWindow .submit-btn:focus-within {
+  color: var(--PRIMARY-COLOR);
+  border: 1px solid var(--PRIMARY-COLOR);
+  background-color: beige;
+}
+
+#btnClose:hover {
+  font-weight: bold;
+}
+
+.scroll-to-top:hover {
+  background-color: var(--ACCENT-COLOR2);
+  opacity: 1;
+}
+
+/*}*/

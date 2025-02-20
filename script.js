@@ -1,46 +1,76 @@
-/* Toggle hover or no hover on touch devices */
+/* Touchscreen solution for hover */
 document.addEventListener("DOMContentLoaded", () => {
     const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
-
     if (isTouchDevice) {
-        let currentActiveElement = null;
+        // Remove any hover-specific handlers on touch devices
         const elements = document.querySelectorAll('a.inline-fancy, .text-box h1, .hero-btn, .container, .scrollable-card-2, .service-photo img, .list-in-main a.inline-fancy, .submit-btn, a.inline-fancy-footer, .menu-wrap .toggler:checked, .underline-hover-btn, .delayedPopupWindow .submit-btn, #btnClose, .scroll-to-top');
 
         elements.forEach(element => {
-            element.addEventListener('click', (event) => {
-                event.preventDefault();
-                event.stopPropagation();
-
-                // If clicking the currently active element, deactivate it
-                if (currentActiveElement === element) {
-                    element.classList.remove('hover-active');
-                    currentActiveElement = null;
-                    return;
-                }
-
-                // Remove active class from previous element
-                if (currentActiveElement) {
-                    currentActiveElement.classList.remove('hover-active');
-                }
-
-                // Activate new element
-                element.classList.add('hover-active');
-                currentActiveElement = element;
+            // Optional: Add a touch-specific active state for visual feedback
+            element.addEventListener('touchstart', () => {
+                element.classList.add('touch-active');
             });
-        });
 
-        // Remove "hover-active" from all elements when clicking outside
-        document.addEventListener('click', () => {
-            if (currentActiveElement) {
-                currentActiveElement.classList.remove('hover-active');
-                currentActiveElement = null;
-            }
+            element.addEventListener('touchend', () => {
+                element.classList.remove('touch-active');
+            });
         });
     }
 });
 
+/* Double click on touchscreens
+document.addEventListener("DOMContentLoaded", () => {
+    const isTouchDevice = 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+    if (isTouchDevice) {
+        let currentActiveElement = null;
+        const elements = document.querySelectorAll('a.inline-fancy, .text-box h1, .hero-btn, .container, .scrollable-card-2, .service-photo img, .list-in-main a.inline-fancy, .submit-btn, a.inline-fancy-footer, .menu-wrap .toggler:checked, .underline-hover-btn, .delayedPopupWindow .submit-btn, #btnClose, .scroll-to-top');
+        
+        elements.forEach(element => {
+            let isFirstTouch = true;
 
+            element.addEventListener('touchstart', (event) => {
+                console.log('Touch event on element:', element);
+                console.log('Is first touch:', isFirstTouch);
+                
+                if (isFirstTouch) {
+                    // First touch - show hover state
+                    event.preventDefault();
+                    
+                    // Clear previous hover states
+                    elements.forEach(el => el.classList.remove('hover-active'));
+                    
+                    element.classList.add('hover-active');
+                    currentActiveElement = element;
+                    isFirstTouch = false;
+                    
+                    console.log('Added hover state');
+                } else {
+                    // Second touch - allow normal link behavior
+                    element.classList.remove('hover-active');
+                    currentActiveElement = null;
+                    isFirstTouch = true;
+                    
+                    console.log('Removed hover state, allowing click');
+                }
+            });
+        });
 
+        // Clear hover states when touching outside
+        document.addEventListener('touchstart', (event) => {
+            const clickedElement = event.target.closest(elements);
+            if (!clickedElement && currentActiveElement) {
+                console.log('Touched outside, clearing states');
+                currentActiveElement.classList.remove('hover-active');
+                currentActiveElement = null;
+                // Reset first touch states for all elements
+                elements.forEach(element => {
+                    element._isFirstTouch = true;
+                });
+            }
+        });
+    }
+}); 
+*/
 
 
 /* // Email Sender Component

@@ -10,6 +10,7 @@ header('Content-Type: application/json');
 
 // Log file setup
 $logFile = __DIR__ . '/form_submissions.log';
+
 function writeLog($message)
 {
     global $logFile;
@@ -37,19 +38,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         writeLog("Decoded data: " . print_r($data, true));
 
-        // Validate required fields
-        $requiredFields = ['name', 'email', 'phone'];
-        foreach ($requiredFields as $field) {
-            if (empty($data[$field])) {
-                throw new Exception("Missing required field: $field");
-            }
+        // Validate only email as required
+        if (empty($data['email'])) {
+            throw new Exception('Email is required');
         }
 
-        // Your Google Apps Script URL - make sure this is correct
-        $url = 'https://script.google.com/macros/s/AKfycbxB5BDcirEuY3FNgvlXwxkmeqNZWmT763V93ck04Z6djTnfAONCHmBqL7kUT4r3rsizTg/exec';
+        // Prepare data with optional fields
+        $formData = [
+            'email' => trim($data['email']),
+            'name' => isset($data['name']) ? trim($data['name']) : '',
+            'phone' => isset($data['phone']) ? trim($data['phone']) : ''
+        ];
+
+        // Your Google Apps Script URL
+        $url = 'https://script.google.com/macros/s/AKfycbw-RgsZa5I4iVIHlJXdnes7kDSuRiWKR-iYd6yY9qu4UVfDenLLlDXdBgiPMKIvVwYSeA/exec';
 
         $ch = curl_init($url);
-        $postData = http_build_query($data);
+        $postData = http_build_query($formData);
         writeLog("Sending to Apps Script: " . $postData);
 
         curl_setopt_array($ch, [

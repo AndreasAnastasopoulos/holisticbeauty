@@ -1,0 +1,11 @@
+[2024-12-21 17:33:35] Request received: POST
+[2024-12-21 17:33:35] Raw input: {"name":"TEST","email":"TEST@GMAIL.COM","phone":"111111"}
+[2024-12-21 17:33:35] Decoded data: Array
+(
+    [name] => TEST
+    [email] => TEST@GMAIL.COM
+    [phone] => 111111
+)
+
+[2024-12-21 17:33:35] Sending to Apps Script: name=TEST&email=TEST%40GMAIL.COM&phone=111111
+[2024-12-21 17:33:38] Apps Script response (HTTP 200): {"success":true,"message":"Η φόρμα υποβλήθηκε με επιτυχία"}
