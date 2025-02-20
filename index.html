@@ -6,37 +6,14 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="homepage">
-  <link rel="stylesheet" href="styleaki.css">
+  <link rel="stylesheet" href="./styleaki.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;700&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/57265726f8.js" crossorigin="anonymous"></script>
-  <link rel="apple-touch-icon" sizes="180x180" href="images/newimgs/favicon_io (1)/apple-touch-icon.png">
-  <link rel="icon" type="image/png" sizes="32x32" href="images/newimgs/favicon_io (1)/favicon-32x32.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="images/newimgs/favicon_io (1)/favicon-16x16.png">
-  <link rel="manifest" href="images/newimgs/favicon_io (1)/site.webmanifest">
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script>
-    $(document).ready(function () {
-      // Fade in delay for the background overlay
-      $("#bkgOverlay").delay(4800).fadeIn(400);
-      // Fade in delay for the popup
-      $("#delayedPopup").delay(5000).fadeIn(400);
-
-      // Hide dialog and background when the user clicks the close button
-      $("#btnClose").click(function (e) {
-        HideDialog();
-        e.preventDefault();
-      });
-    });
-
-    // Controls how the modal popup is closed with the close button
-    function HideDialog() {
-      $("#bkgOverlay").fadeOut(400);
-      $("#delayedPopup").fadeOut(300);
-    }
-  </script>
-  <script src="script.js"></script>
+  <link rel="apple-touch-icon" sizes="180x180" href="./images/newimgs/favicon_io (1)/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/newimgs/favicon_io (1)/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./images/newimgs/favicon_io (1)/favicon-16x16.png">
+  <link rel="manifest" href="./images/newimgs/favicon_io (1)/site.webmanifest">
 </head>
 
 <body class="main-page">
@@ -55,10 +32,11 @@
       </div>
       <div>
         <a href="index.html">
-          <img src="images/newimgs/House Spa_logo.png" alt="Logo">
+          <img src="./images/newimgs/House Spa_logo.png" alt="Logo">
         </a>
       </div>
       <div class="menu-wrap">
+
         <input type="checkbox" class="toggler">
         <div class="hamburger">
           <div></div>
@@ -71,7 +49,7 @@
                     ΕΜΕΝΑ</a></li>
                 <li><a class="underline-hover-btn" href="appointment.html">ΟΛΙΣΤΙΚΕΣ ΘΕΡΑΠΕΙΕΣ</a></li>
                 <li><a class="underline-hover-btn" href="consulting.html">ΣΥΜΒΟΥΛΕΥΤΙΚΗ</a></li>
-                <li><a class="underline-hover-btn" href="images/House Spa Holistic Training.pdf"
+                <li><a class="underline-hover-btn" href="./images/House Spa Holistic Training.pdf"
                     download="House Spa Holistic Training">HOUSE SPA HOLISTIC TRAINING</a></li>
                 <li><a class="underline-hover-btn" href="contact.html">ΕΠΙΚΟΙΝΩΝΙΑ</a></li>
               </ul>
@@ -87,7 +65,7 @@
       <h1>Η ΑΛΗΘΙΝΗ ΛΑΜΨΗ ΕΙΝΑΙ ΜΕΣΑ ΣΟΥ</h1>
     </div>
     <div class="button-container">
-      <a title="Κλείσε την θεραπεία σου εδώ" href="appointment.html" class="hero-btn">Έτοιμη για τη δική σου στιγμή
+      <a title="Κλείσε την θεραπεία σου εδώ" href="./appointment" class="hero-btn">Έτοιμη για τη δική σου στιγμή
         χαλάρωσης;</a>
     </div>
   </div>
@@ -116,6 +94,28 @@
     </form>
   </div>
   <script src="https://cdn.jsdelivr.net/gh/noumanqamar450/alertbox@main/version/1.0.2/alertbox.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      // Fade in delay for the background overlay
+      $("#bkgOverlay").delay(4800).fadeIn(400);
+      // Fade in delay for the popup
+      $("#delayedPopup").delay(5000).fadeIn(400);
+
+      // Hide dialog and background when the user clicks the close button
+      $("#btnClose").click(function (e) {
+        HideDialog();
+        e.preventDefault();
+      });
+    });
+
+    // Controls how the modal popup is closed with the close button
+    function HideDialog() {
+      $("#bkgOverlay").fadeOut(400);
+      $("#delayedPopup").fadeOut(300);
+    }
+  </script>
+  <script src="script.js"></script>
 </body>
 
 
